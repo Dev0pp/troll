@@ -9,6 +9,7 @@ const fetch = global.fetch || ((...args)=>import('node-fetch').then(({default: f
 const app = express();
 app.use(helmet());
 app.use(cors({ origin: true }));
+app.use('/dashboard', express.static(__dirname + '/../dashboard-panel-main/public'));
 app.use(express.json({ limit: '1mb' }));
 app.use(rateLimit({ windowMs: 10*60*1000, max: 800 }));
 
